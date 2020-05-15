@@ -15,7 +15,11 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
+<?php include_once 'includes/db.php'; ?>
+<?php include_once 'includes/functions.php'; ?>
+
 <?php
+
 
 //TODO not everything here yet.
 $tables = array('SystemStatus', 'EventLog', 'SUMPReadings', 'G3Readings', 'G4Readings', 'G6Readings', 'V4Readings');
@@ -83,7 +87,7 @@ if (isset($_GET['table'])) {
         </div>
 
         <div id="table">
-            <?php echo $table . " and " . $table_friendly_name; ?>
+            
         </div>        
     </body>
 </html>
