@@ -52,10 +52,10 @@ if (isset($_GET['table'])) {
     <body>
         <div id="form">
             <form method="get">
-                <label for="table">Select a table:</label>
+                <label for="table-select">Select a table:</label>
 
                 <!-- Populate this choice box with all the tables and their friendly names --> 
-                <select id="table">
+                <select id="table-select" name="table">
                     <?php
 
                     foreach ($tables_friendly as $friendly_name) {
@@ -64,7 +64,15 @@ if (isset($_GET['table'])) {
 
                         $name = $tables[$index];
 
-                        echo "<option value='" . $name . "'>" . $friendly_name . "</option>";
+                        //Figure out if we should make this option selected.
+                        $selected = ($name == $table);
+
+                        if ($selected) {
+                            echo "<option value='" . $name . "' selected>" . $friendly_name . "</option>";
+
+                        } else {
+                            echo "<option value='" . $name . "'>" . $friendly_name . "</option>";
+                        }
                     }
 
                     ?>
