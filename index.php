@@ -63,7 +63,7 @@ if (isset($_GET['table'])) {
 
                     $name = $tables[$index];
 
-                    echo "<option value='" . $name . "'>" . $table_name . "</option>";
+                    echo "<option value='" . $name . "'>" . $friendly_name . "</option>";
                 }
 
                 ?>
