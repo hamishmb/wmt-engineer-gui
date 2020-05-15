@@ -88,6 +88,13 @@ if (isset($_GET['table'])) {
 
         <div id="table">
             <?php display_table($table, $table_friendly_name); ?>
-        </div>        
+        </div>
+
+        <script type="text/javascript">
+            window.onload = setTimeout(function(){
+                location.reload();
+            },30000)
+        </script>
+        
     </body>
 </html>
