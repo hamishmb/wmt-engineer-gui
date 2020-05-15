@@ -32,6 +32,12 @@ table caption {
     text-align: center;
 }
 
+/* Create borders for each table header and data cell */
+table th, table td {
+    border: 1px solid black;
+    padding: 10px;
+}
+
 /* Hide some table elements on small screens */
 @media screen and (max-width: 480px) {
     html {
