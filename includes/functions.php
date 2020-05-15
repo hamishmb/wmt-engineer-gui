@@ -135,4 +135,56 @@ function display_eventlog($table, $table_friendly_name) {
 
 }
 
+function display_readingstable($table, $table_friendly_name) {
+    global $connection;
+
+    ?>
+
+    <article>
+        <table>
+            <caption><h2><?php echo $table_friendly_name; ?></h2></caption>
+            <tr>
+                <th>Probe ID</th>
+                <th>Tick</th>
+                <th>Measure Time</th>
+                <th>Value</th>
+                <th>Status</th>
+            </tr>
+
+    <?php
+
+    //Get everything except the first row.
+    $query = "SELECT * FROM " . $table;
+
+    $data_query = mysql_query($query, $connection);
+    die_if_not_successful_query($data_query);
+
+    while ($row = mysql_fetch_assoc($data_query)) {
+        $ID = $row['Probe ID'];
+        $tick = $row['Tick'];
+        $time = $row['Measure Time'];
+        $value = $row['Value'];
+        $status = $row['Status'];
+        
+    ?>
+
+
+        <tr>
+            <td><?php echo $ID; ?></td>
+            <td><?php echo $tick; ?></td>
+            <td><?php echo $time; ?></td>
+            <td><?php echo $value; ?></td>
+            <td><?php echo $status; ?></td>
+        </tr>
+
+        <?php } ?>
+
+        </table>
+        <br>
+    </article>
+
+<?php
+
+}
+
 ?>
