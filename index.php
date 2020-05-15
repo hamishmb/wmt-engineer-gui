@@ -21,7 +21,7 @@
 $tables = array('SystemStatus', 'EventLog', 'SUMPReadings', 'G3Readings', 'G4Readings', 'G6Readings', 'V4Readings');
 $tables_friendly = array('System Status', 'Events', 'SUMP', 'G3', 'G4', 'G6', 'V4');
 
-if (isset($_GET['table']) {
+if (isset($_GET['table'])) {
     $table = $_GET['table'];
 
     //Check that this is a valid table.
