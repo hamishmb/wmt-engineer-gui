@@ -59,9 +59,9 @@ if (isset($_GET['table'])) {
 
                 foreach ($tables_friendly as $friendly_name) {
                     //Get the actual table name for the value.
-                    $index = array_search($tables_friendly, $friendly_name);
+                    $index = array_search($friendly_name, $tables_friendly);
 
-                    $name = $tables_friendly[$index];
+                    $name = $tables[$index];
 
                     echo "<option value='" . $name . "'>" . $table_name . "</option>";
                 }
