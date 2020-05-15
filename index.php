@@ -87,7 +87,7 @@ if (isset($_GET['table'])) {
         </div>
 
         <div id="table">
-            
+            <?php display_table($table, $table_friendly_name); ?>
         </div>        
     </body>
 </html>
