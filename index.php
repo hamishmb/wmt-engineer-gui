@@ -5,6 +5,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
+        <link href="style.css" rel="stylesheet" type="text/css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>WMT Engineers GUI</title>
     </head>

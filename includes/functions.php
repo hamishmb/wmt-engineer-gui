@@ -145,10 +145,10 @@ function display_readingstable($table, $table_friendly_name) {
             <caption><h2><?php echo $table_friendly_name; ?></h2></caption>
             <tr>
                 <th>Probe ID</th>
-                <th>Tick</th>
-                <th>Measure Time</th>
+                <th class="nonessential">Tick</th>
+                <th class="nonessential">Measure Time</th>
                 <th>Value</th>
-                <th>Status</th>
+                <th class="nonessential">Status</th>
             </tr>
 
     <?php
@@ -171,10 +171,10 @@ function display_readingstable($table, $table_friendly_name) {
 
         <tr>
             <td><?php echo $ID; ?></td>
-            <td><?php echo $tick; ?></td>
-            <td><?php echo $time; ?></td>
+            <td class="nonessential"><?php echo $tick; ?></td>
+            <td class="nonessential"><?php echo $time; ?></td>
             <td><?php echo $value; ?></td>
-            <td><?php echo $status; ?></td>
+            <td class="nonessential"><?php echo $status; ?></td>
         </tr>
 
         <?php } ?>
