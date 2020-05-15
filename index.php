@@ -51,7 +51,7 @@ if (isset($_GET['table'])) {
 
     <body>
         <div id="form">
-            <form action="./index.php" method="GET">
+            <form method="get">
                 <label for="table">Select a table:</label>
 
                 <!-- Populate this choice box with all the tables and their friendly names --> 
