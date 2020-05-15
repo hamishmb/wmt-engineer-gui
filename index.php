@@ -18,6 +18,13 @@
 <?php include_once 'includes/db.php'; ?>
 <?php include_once 'includes/functions.php'; ?>
 
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>WMT Engineers GUI</title>
+    </head>
+
 <?php
 
 
@@ -47,11 +54,6 @@ if (isset($_GET['table'])) {
 }
 
 ?>
-
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-    </head>
 
     <body>
         <div id="form">
