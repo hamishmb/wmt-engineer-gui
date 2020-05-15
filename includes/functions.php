@@ -20,7 +20,7 @@ function die_if_not_successful_query($result) {
     global $connection;
 
     if (!$result) {
-        die("Query Failed: " . mysqli_error($connection));
+        die("Query Failed: " . mysql_error($connection));
     }
 }
 
@@ -44,7 +44,7 @@ function display_table($table, $table_friendly_name) {
     //Get everything except the first row.
     $query = "SELECT * FROM " . $table;
 
-    $data_query = mysql_query($connection, $query);
+    $data_query = mysql_query($query, $connection);
     die_if_not_successful_query($data_query);
 
     while ($row = mysql_fetch_assoc($data_query)) {
