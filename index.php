@@ -50,24 +50,32 @@ if (isset($_GET['table'])) {
     </head>
 
     <body>
-        <form action="./index.php" method="GET">
-            <label for="table">Select a table:</label>
+        <div id="form">
+            <form action="./index.php" method="GET">
+                <label for="table">Select a table:</label>
 
-            <!-- Populate this choice box with all the tables and their friendly names --> 
-            <select id="table">
-                <?php
+                <!-- Populate this choice box with all the tables and their friendly names --> 
+                <select id="table">
+                    <?php
 
-                foreach ($tables_friendly as $friendly_name) {
-                    //Get the actual table name for the value.
-                    $index = array_search($friendly_name, $tables_friendly);
+                    foreach ($tables_friendly as $friendly_name) {
+                        //Get the actual table name for the value.
+                        $index = array_search($friendly_name, $tables_friendly);
 
-                    $name = $tables[$index];
+                        $name = $tables[$index];
 
-                    echo "<option value='" . $name . "'>" . $friendly_name . "</option>";
-                }
+                        echo "<option value='" . $name . "'>" . $friendly_name . "</option>";
+                    }
 
-                ?>
-            </select>
-        </form>
+                    ?>
+                </select>
+
+                <input type="submit" value="Show">
+            </form>
+        </div>
+
+        <div id="table">
+            <?php echo $table . " and " . $table_friendly_name; ?>
+        </div>        
     </body>
 </html>
