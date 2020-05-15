@@ -1,0 +1,44 @@
+/* Stylesheet
+This file is part of the WMT Engineer GUI
+Copyright (C) 2020 Wimborne Model Town
+My website is free software: you can redistribute it and/or modify it
+under the terms of the GNU General Public License version 3 or,
+at your option, any later version.
+
+My website is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with My website.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+html {
+    background: rgb(255,255,255);
+    font-family: sans-serif; /* Use a sans-serif font because it's easier to read, esp. for those who have dyslexia or similar */
+    font-size: 15px;
+    line-height: 1.7em;
+}
+
+/* -- Tables -- */
+table {
+    margin: 0 auto 0 auto;
+    text-align: left;
+    border: 1px solid black;
+}
+
+table caption {
+    text-align: center;
+}
+
+/* Hide some table elements on small screens */
+@media screen and (max-width: 480px) {
+    html {
+        font-size: 6vw;
+    }
+
+    .nonessential {
+        display: none;
+    } 
+}
