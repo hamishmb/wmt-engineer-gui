@@ -31,10 +31,11 @@ function display_table($table, $table_friendly_name) {
     } else if ($table == "EventLog") {
         display_eventlog($table, $table_friendly_name);
 
-    } else {
+    } else if (preg_match("/Readings/i", $table)){
         display_readingstable($table, $table_friendly_name);
 
-    }
+    } else if (preg_match("/Control/i", $table)){
+        display_controltable($table, $table_friendly_name);
 }
 
 function display_systemstatus($table, $table_friendly_name) {
@@ -175,6 +176,56 @@ function display_readingstable($table, $table_friendly_name) {
             <td class="nonessential"><?php echo $time; ?></td>
             <td><?php echo $value; ?></td>
             <td class="nonessential"><?php echo $status; ?></td>
+        </tr>
+
+        <?php } ?>
+
+        </table>
+        <br>
+    </article>
+
+<?php
+
+}
+
+function display_controltable($table, $table_friendly_name) {
+    global $connection;
+
+    ?>
+
+    <article>
+        <table>
+            <caption><h2><?php echo $table_friendly_name; ?></h2></caption>
+            <tr>
+                <th>Device ID</th>
+                <th>Device Status</th>
+                <th>Request</th>
+                <th>Locked By</th>
+            </tr>
+
+    <?php
+
+    //Get everything except the first row.
+    $query = "SELECT * FROM " . $table . " ORDER BY ID DESC LIMIT 0, 50";
+
+    $data_query = mysql_query($query, $connection);
+    die_if_not_successful_query($data_query);
+
+    while ($row = mysql_fetch_assoc($data_query)) {
+        $ID = $row['Device ID'];
+        $status = $row['Device Status'];
+        $request = $row['Request'];
+        $lockedby = $row['Locked By'];
+        
+    ?>
+
+
+        <tr>
+            <td><?php echo $ID; ?></td>
+            <td><?php echo $status; ?></td>
+            <td><?php echo $request; ?></td>
+            <td><?php echo $value; ?></td>
+            <td><?php echo $lockedby; ?></td>
         </tr>
 
         <?php } ?>

@@ -27,7 +27,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 //TODO not everything here yet.
-$tables = array('SystemStatus', 'EventLog', 'SUMPReadings', 'G3Readings', 'G4Readings', 'G6Readings', 'V4Readings');
+$tables = array('SystemStatus', 'EventLog', 'SUMPReadings', 'SUMPControl', 'G3Readings', 'G4Readings', 'G6Readings', 'V4Readings');
 $tables_friendly = array('System Status', 'Events', 'SUMP', 'G3', 'G4', 'G6', 'V4');
 
 if (isset($_GET['table'])) {
