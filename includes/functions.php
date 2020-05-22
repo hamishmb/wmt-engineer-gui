@@ -36,6 +36,8 @@ function display_table($table, $table_friendly_name) {
 
     } else if (preg_match("/Control/i", $table)){
         display_controltable($table, $table_friendly_name);
+
+    }
 }
 
 function display_systemstatus($table, $table_friendly_name) {
