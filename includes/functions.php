@@ -226,7 +226,6 @@ function display_controltable($table, $table_friendly_name) {
             <td><?php echo $ID; ?></td>
             <td><?php echo $status; ?></td>
             <td><?php echo $request; ?></td>
-            <td><?php echo $value; ?></td>
             <td><?php echo $lockedby; ?></td>
         </tr>
 
