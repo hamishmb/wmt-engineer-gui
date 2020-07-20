@@ -26,9 +26,23 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-//TODO not everything here yet.
-$tables = array('SystemStatus', 'EventLog', 'SUMPReadings', 'SUMPControl', 'G3Readings', 'G4Readings', 'G6Readings', 'V4Readings');
-$tables_friendly = array('System Status', 'Events', 'SUMP', 'SUMPControl', 'G3', 'G4', 'G6', 'V4');
+$tables = array('SystemStatus', 'EventLog', 'SystemTick', 'SUMPReadings', 'SUMPControl',
+                'G3Readings', 'G3Control', 'G4Readings', 'G4Control', 'G5Readings', 'G5Control',
+                'G6Readings', 'G6Control', 'VALVE1Readings', 'VALVE1Control', 'VALVE2Readings',
+                'VALVE2Control', 'VALVE3Readings', 'VALVE3Control', 'VALVE4Readings',
+                'VALVE4Control', 'VALVE5Readings', 'VALVE5Control', 'VALVE6Readings',
+                'VALVE6Control', 'VALVE7Readings', 'VALVE7Control', 'VALVE8Readings',
+                'VALVE8Control', 'VALVE9Readings', 'VALVE9Control', 'VALVE10Readings',
+                'VALVE10Control', 'VALVE11Readings', 'VALVE11Control', 'VALVE12Readings',
+                'VALVE12Control');
+
+$tables_friendly = array('System Status', 'Events', 'Ticks', 'SUMP', 'SUMPControl', 'G3',
+                         'G3Control', 'G4', 'G4Control', 'G5', 'G5Control', 'G6', 'G6Control',
+                         'VALVE1', 'VALVE1Control', 'VALVE2', 'VALVE2Control', 'VALVE3',
+                         'VALVE3Control', 'VALVE4', 'VALVE4Control', 'VALVE5', 'VALVE5Control',
+                         'VALVE6', 'VALVE6Control', 'VALVE7', 'VALVE7Control', 'VALVE8',
+                         'VALVE8Control', 'VALVE9', 'VALVE9Control', 'VALVE10', 'VALVE10Control',
+                         'VALVE11', 'VALVE11Control', 'VALVE12', 'VALVE12Control',);
 
 if (isset($_GET['table'])) {
     $table = $_GET['table'];

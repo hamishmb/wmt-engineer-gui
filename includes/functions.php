@@ -31,6 +31,9 @@ function display_table($table, $table_friendly_name) {
     } else if ($table == "EventLog") {
         display_eventlog($table, $table_friendly_name);
 
+    } else if ($table == "SystemTick") {
+        display_systemtick($table, $table_friendly_name);
+
     } else if (preg_match("/Readings/i", $table)){
         display_readingstable($table, $table_friendly_name);
 
@@ -70,7 +73,6 @@ function display_systemstatus($table, $table_friendly_name) {
         $action = $row['Current Action'];
         
     ?>
-
 
         <tr>
             <td><?php echo $ID; ?></td>
@@ -120,11 +122,52 @@ function display_eventlog($table, $table_friendly_name) {
         
     ?>
 
-
         <tr>
             <td><?php echo $ID; ?></td>
             <td><?php echo $severity; ?></td>
             <td><?php echo $event; ?></td>
+            <td><?php echo $time; ?></td>
+        </tr>
+
+        <?php } ?>
+
+        </table>
+        <br>
+    </article>
+
+<?php
+
+}
+
+function display_systemtick($table, $table_friendly_name) {
+    global $connection;
+
+    ?>
+
+    <article>
+        <table>
+            <caption><h2><?php echo $table_friendly_name; ?></h2></caption>
+            <tr>
+                <th>Tick</th>
+                <th>System Time</th>
+            </tr>
+
+    <?php
+
+    //Get everything except the first row.
+    $query = "SELECT * FROM " . $table . " ORDER BY ID DESC LIMIT 0, 50";
+
+    $data_query = mysql_query($query, $connection);
+    die_if_not_successful_query($data_query);
+
+    while ($row = mysql_fetch_assoc($data_query)) {
+        $tick = $row['Tick'];
+        $time = $row['System Time'];
+        
+    ?>
+
+        <tr>
+            <td><?php echo $tick; ?></td>
             <td><?php echo $time; ?></td>
         </tr>
 
@@ -170,7 +213,6 @@ function display_readingstable($table, $table_friendly_name) {
         $status = $row['Status'];
         
     ?>
-
 
         <tr>
             <td><?php echo $ID; ?></td>
@@ -220,7 +262,6 @@ function display_controltable($table, $table_friendly_name) {
         $lockedby = $row['Locked By'];
         
     ?>
-
 
         <tr>
             <td><?php echo $ID; ?></td>
