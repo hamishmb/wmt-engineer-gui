@@ -3,8 +3,8 @@
 $db_user = "localhost";
 
 $db['db_host'] = "localhost";
-$db['db_user'] = "admin";
-$db['db_pass'] = "admin";
+$db['db_user'] = "visitoriface";
+$db['db_pass'] = "RiverSystemVisitoriface2020";
 $db['db_name'] = "rivercontrolsystem";
 
 foreach ($db as $key => $value) {
