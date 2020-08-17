@@ -16,6 +16,8 @@
 
 <?php
 
+$VERSION = "1.0"
+
 function die_if_not_successful_query($result) {
     global $connection;
 
@@ -61,7 +63,7 @@ function display_systemstatus($table, $table_friendly_name) {
     <?php
 
     //Get everything except the first row.
-    $query = "SELECT * FROM " . $table . " ORDER BY ID DESC LIMIT 0, 50";
+    $query = "SELECT * FROM " . $table . " ORDER BY `System ID` DESC LIMIT 0, 50";
 
     $data_query = mysql_query($query, $connection);
     die_if_not_successful_query($data_query);

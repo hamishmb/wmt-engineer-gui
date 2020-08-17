@@ -105,6 +105,8 @@ if (isset($_GET['table'])) {
             <?php display_table($table, $table_friendly_name); ?>
         </div>
 
+        <p style="text-align: center;">Version <?php echo $VERSION; ?></p>
+
         <script type="text/javascript">
             window.onload = setTimeout(function(){
                 location.reload();
