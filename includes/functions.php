@@ -16,7 +16,7 @@
 
 <?php
 
-$VERSION = "1.0"
+$VERSION = "1.0";
 
 function die_if_not_successful_query($result) {
     global $connection;
