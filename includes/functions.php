@@ -202,7 +202,7 @@ function display_readingstable($table, $table_friendly_name) {
     <?php
 
     //Get everything except the first row.
-    $query = "SELECT * FROM " . $table . " ORDER BY `Measure Time` DESC, `Probe ID` DESC LIMIT 0, 50";
+    $query = "SELECT * FROM " . $table . " ORDER BY `Tick` DESC, `Probe ID` DESC LIMIT 0, 50";
 
     $data_query = mysql_query($query, $connection);
     die_if_not_successful_query($data_query);
