@@ -36,6 +36,12 @@ body {
     margin-bottom: 20px;
 }
 
+#nav ul {
+    margin: 0;
+    padding: 0;
+}
+
+
 #nav li {
     background: white;
     display: inline;
@@ -87,6 +93,14 @@ table th, table td {
 @media screen and (max-width: 480px) {
     html {
         font-size: 6vw;
+    }
+
+    #nav li {
+        display: list-item;
+        list-style-type: none;
+        padding: 10px;
+        margin-left: 5px;
+        margin-right: 5px;
     }
 
     .nonessential {
