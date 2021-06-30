@@ -46,6 +46,10 @@ $tables_friendly = array('System Status', 'Events', 'Ticks', 'NASControl', 'SUMP
                          'VALVE9 (Matrix)', 'VALVE9Control', 'VALVE10 (TBD)', 'VALVE10Control',
                          'VALVE11 (TBD)', 'VALVE11Control', 'VALVE12 (Stage)', 'VALVE12Control',);
 
+$severity_filters = array("None", "DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL");
+
+$severity_filters_friendly = array("None", "Debug", "Info", "Warning", "Error", "Critical");
+
 if (isset($_GET['table'])) {
     $table = $_GET['table'];
 
@@ -67,9 +71,22 @@ if (isset($_GET['table'])) {
     $table_friendly_name = $tables_friendly[$index];
 }
 
+if (isset($_GET['severity-filter'])) {
+    $severity_filter = $_GET['severity-filter'];
+
+    //Check this is a valid value.
+    if (!in_array($severity_filter, $severity_filters)) {
+        die('Invalid Filter Value');
+    }
+
+} else {
+    $severity_filter = "None";
+}
+
 ?>
 
     <body>
+        <?php include_once 'nav.html'; ?>
         <div id="form">
             <form method="get">
                 <label for="table-select">Select a table:</label>
@@ -102,8 +119,42 @@ if (isset($_GET['table'])) {
             </form>
         </div>
 
+        <?php
+        //If we're viewing the event log, add another form for severity filtering.
+        if ($table === "EventLog") { ?>
+            <form method="get">
+                <label for="severity-select">Filter by severity:</label>
+                <select id="severity-select" name="severity-filter">
+                    <?php
+
+                    foreach ($severity_filters_friendly as $friendly_name) {
+                        //Get the actual table name for the value.
+                        $index = array_search($friendly_name, $severity_filters_friendly);
+
+                        $name = $severity_filters[$index];
+
+                        $selected = ($name === $severity_filter);
+
+                        if ($selected) {
+                            echo "<option value='" . $name . "' selected>" . $friendly_name . "</option>";
+
+                        } else {
+                            echo "<option value='" . $name . "'>" . $friendly_name . "</option>";
+
+                        }
+                    }
+
+                    ?>
+                </select>
+
+                <input type="hidden" name="table" value="EventLog">
+                <input type="submit" value="Filter">
+            </form>
+        <?php } ?>
+
+
         <div id="table">
-            <?php display_table($table, $table_friendly_name); ?>
+            <?php display_table($table, $table_friendly_name, $severity_filter); ?>
         </div>
 
         <p style="text-align: center;">Version <?php echo $VERSION; ?></p>

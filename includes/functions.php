@@ -26,12 +26,12 @@ function die_if_not_successful_query($result) {
     }
 }
 
-function display_table($table, $table_friendly_name) {
+function display_table($table, $table_friendly_name, $severity_filter) {
     if ($table == "SystemStatus") {
         display_systemstatus($table, $table_friendly_name);
 
     } else if ($table == "EventLog") {
-        display_eventlog($table, $table_friendly_name);
+        display_eventlog($table, $table_friendly_name, $severity_filter);
 
     } else if ($table == "SystemTick") {
         display_systemtick($table, $table_friendly_name);
@@ -93,7 +93,7 @@ function display_systemstatus($table, $table_friendly_name) {
 
 }
 
-function display_eventlog($table, $table_friendly_name) {
+function display_eventlog($table, $table_friendly_name, $severity_filter) {
     global $connection;
 
     ?>
@@ -110,8 +110,14 @@ function display_eventlog($table, $table_friendly_name) {
 
     <?php
 
-    //Get everything except the first row.
-    $query = "SELECT * FROM " . $table . " ORDER BY ID DESC LIMIT 0, 50";
+    //Customise query based on our severity filter.
+    if ($severity_filter === "None") {
+        $query = "SELECT * FROM " . $table . " ORDER BY ID DESC LIMIT 0, 50";
+
+    } else {
+        $query = "SELECT * FROM " . $table . " WHERE `Severity` = '" . $severity_filter . "' ORDER BY ID DESC LIMIT 0, 50";
+
+    }
 
     $data_query = mysql_query($query, $connection);
     die_if_not_successful_query($data_query);

@@ -15,10 +15,34 @@ along with The WMT Engineer GUI.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 html {
-    background: rgb(255,255,255);
+    background: #FEEAB3;
     font-family: sans-serif; /* Use a sans-serif font because it's easier to read, esp. for those who have dyslexia or similar */
     font-size: 15px;
     line-height: 1.7em;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* -- Navigation -- */
+#nav {
+    background: purple;
+    text-align: center;
+    padding: 15px;
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+#nav li {
+    background: white;
+    display: inline;
+    list-style-type: none;
+    padding: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 /* -- Tables -- */
