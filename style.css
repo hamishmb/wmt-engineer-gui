@@ -1,6 +1,6 @@
 /* Stylesheet
 This file is part of the WMT Engineer GUI
-Copyright (C) 2020 Wimborne Model Town
+Copyright (C) 2020-21 Wimborne Model Town
 My website is free software: you can redistribute it and/or modify it
 under the terms of the GNU General Public License version 3 or,
 at your option, any later version.
@@ -47,4 +47,21 @@ table th, table td {
     .nonessential {
         display: none;
     } 
+}
+
+/* Text colours to use to improve readability */
+.black {
+    color: black;
+}
+
+.green {
+    color: green;
+}
+
+.orange {
+    color: orange;
+}
+
+.red {
+    color: red;
 }

@@ -1,6 +1,6 @@
 <!--
 # Engineer GUI functions
-# Copyright (C) 2020 Wimborne Model Town
+# Copyright (C) 2020-21 Wimborne Model Town
 # This program is free software: you can redistribute it and/or modify it
 # under the terms of the GNU General Public License version 3 or,
 # at your option, any later version.
@@ -16,7 +16,7 @@
 
 <?php
 
-$VERSION = "1.0.2";
+$VERSION = "1.1.0";
 
 function die_if_not_successful_query($result) {
     global $connection;
@@ -78,8 +78,8 @@ function display_systemstatus($table, $table_friendly_name) {
 
         <tr>
             <td><?php echo $ID; ?></td>
-            <td><?php echo $pi_status; ?></td>
-            <td><?php echo $sw_status; ?></td>
+            <td <?php if (strpos($pi_status, "Up")) { echo "class=green"; } ?>><?php echo $pi_status; ?></td>
+            <td <?php if (strpos($sw_status, "OK")) { echo "class=green"; } ?>><?php echo $sw_status; ?></td>
             <td><?php echo $action; ?></td>
         </tr>
 
@@ -119,14 +119,29 @@ function display_eventlog($table, $table_friendly_name) {
     while ($row = mysql_fetch_assoc($data_query)) {
         $ID = $row['Site ID'];
         $severity = $row['Severity'];
+        $severity_colour = "black";
         $event = $row['Event'];
         $time = $row['Device Time'];
-        
+
+        //Calculate what colour the severity text should be.
+        if ($severity === "INFO") {
+            $severity_colour = "blue";
+
+        } elseif ($severity === "WARNING") {
+            $severity_colour = "orange";
+
+        } elseif ($severity === "ERROR" || $severity === "CRITICAL") {
+            $severity_colour = "red";
+
+        } elseif ($severity === "DEBUG") {
+            $severity_colour = "black";
+        }
+
     ?>
 
         <tr>
             <td><?php echo $ID; ?></td>
-            <td><?php echo $severity; ?></td>
+            <td <?php echo "class=" . $severity_colour; ?>><?php echo $severity; ?></td>
             <td><?php echo $event; ?></td>
             <td><?php echo $time; ?></td>
         </tr>
@@ -221,7 +236,7 @@ function display_readingstable($table, $table_friendly_name) {
             <td class="nonessential"><?php echo $tick; ?></td>
             <td class="nonessential"><?php echo $time; ?></td>
             <td><?php echo $value; ?></td>
-            <td class="nonessential"><?php echo $status; ?></td>
+            <td class="nonessential" <?php if ($status === "OK") { echo "class=green"; } ?>><?php echo $status; ?></td>
         </tr>
 
         <?php } ?>
