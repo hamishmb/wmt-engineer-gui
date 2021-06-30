@@ -1,17 +1,17 @@
 /* Stylesheet
 This file is part of the WMT Engineer GUI
 Copyright (C) 2020-21 Wimborne Model Town
-My website is free software: you can redistribute it and/or modify it
+The WMT Engineer GUI is free software: you can redistribute it and/or modify it
 under the terms of the GNU General Public License version 3 or,
 at your option, any later version.
 
-My website is distributed in the hope that it will be useful,
+The WMT Engineer GUI is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with My website.  If not, see <http://www.gnu.org/licenses/>.
+along with The WMT Engineer GUI.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 html {
@@ -38,17 +38,6 @@ table th, table td {
     padding: 10px;
 }
 
-/* Hide some table elements on small screens */
-@media screen and (max-width: 480px) {
-    html {
-        font-size: 6vw;
-    }
-
-    .nonessential {
-        display: none;
-    } 
-}
-
 /* Text colours to use to improve readability */
 .black {
     color: black;
@@ -58,10 +47,25 @@ table th, table td {
     color: green;
 }
 
+.blue {
+    color: blue;
+}
+
 .orange {
     color: orange;
 }
 
 .red {
     color: red;
+}
+
+/* Hide some table elements on small screens */
+@media screen and (max-width: 480px) {
+    html {
+        font-size: 6vw;
+    }
+
+    .nonessential {
+        display: none;
+    } 
 }

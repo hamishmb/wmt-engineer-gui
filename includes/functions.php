@@ -73,13 +73,13 @@ function display_systemstatus($table, $table_friendly_name) {
         $pi_status = $row['Pi Status'];
         $sw_status = $row['Software Status'];
         $action = $row['Current Action'];
-        
+
     ?>
 
         <tr>
             <td><?php echo $ID; ?></td>
-            <td <?php if (strpos($pi_status, "Up")) { echo "class=green"; } ?>><?php echo $pi_status; ?></td>
-            <td <?php if (strpos($sw_status, "OK")) { echo "class=green"; } ?>><?php echo $sw_status; ?></td>
+            <td <?php if (strpos($pi_status, "Up") !== false) { echo "class=\"green\""; } ?>><?php echo $pi_status; ?></td>
+            <td <?php if (strpos($sw_status, "OK") !== false) { echo "class=\"green\""; } ?>><?php echo $sw_status; ?></td>
             <td><?php echo $action; ?></td>
         </tr>
 
@@ -133,15 +133,13 @@ function display_eventlog($table, $table_friendly_name) {
         } elseif ($severity === "ERROR" || $severity === "CRITICAL") {
             $severity_colour = "red";
 
-        } elseif ($severity === "DEBUG") {
-            $severity_colour = "black";
         }
 
     ?>
 
         <tr>
             <td><?php echo $ID; ?></td>
-            <td <?php echo "class=" . $severity_colour; ?>><?php echo $severity; ?></td>
+            <td <?php echo "class=\"" . $severity_colour . "\""; ?>><?php echo $severity; ?></td>
             <td><?php echo $event; ?></td>
             <td><?php echo $time; ?></td>
         </tr>
@@ -236,7 +234,7 @@ function display_readingstable($table, $table_friendly_name) {
             <td class="nonessential"><?php echo $tick; ?></td>
             <td class="nonessential"><?php echo $time; ?></td>
             <td><?php echo $value; ?></td>
-            <td class="nonessential" <?php if ($status === "OK") { echo "class=green"; } ?>><?php echo $status; ?></td>
+            <td class="nonessential <?php if ($status === "OK") { echo "green"; } ?>"><?php echo $status; ?></td>
         </tr>
 
         <?php } ?>
